@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Циклы 5</title>
+</head>
+<body>
+	<!--Посчитать сумму цифр заданного числа -->
+	<script>
+		var number = 4516;
+		var sum = 0;
+		var nmb = String(number).split("");
+
+		for (var i = 0; i < nmb.length; i++) {
+			sum += +nmb[i]; //преобразуем в число и ищем сумму
+		}
+		alert(sum);
+	</script>
+</body>
+</html>

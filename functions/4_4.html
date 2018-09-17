@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Функции 4</title>
+</head>
+<body>
+	<!--Найти расстояние между двумя точками в двумерном декартовом пространстве. -->
+	<script>
+		function distance(x1, x2, y1, y2) {
+
+			var A = Math.pow((x2 - x1), 2);
+			var B = Math.pow((y2 - y1), 2);
+
+			return Math.sqrt(A + B);
+		}
+
+		var res = distance(2, 4, 3, 8);
+		alert(res);
+
+	</script>
+
+</body>
+</html>

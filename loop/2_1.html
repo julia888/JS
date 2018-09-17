@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Циклы 1</title>
+</head>
+<body>
+	<!--Найти сумму четных чисел и их количество в диапазоне от 1 до 99 -->
+	<script>
+		var sum = 0;
+		var count = 0;
+
+		for (var i = 1; i <= 99; i++) {
+			if (i % 2 == 0) {
+				sum += i;
+				count++;
+			}
+		}
+		alert("Сумма = " + sum + ", количество = " + count);
+	</script>
+</body>
+</html>

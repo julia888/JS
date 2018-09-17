@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Одномерные массивы 3</title>
+</head>
+<body>
+	<!--Найти индекс минимального элемента массива -->
+	<script>
+		var arr = [4,-9,1,5,6,-3,7,2,8];
+		var min_index = 0;
+		var min= 0;
+
+		for (var i = 0; i < arr.length; i++) {
+			if (min > arr[i]) {
+				min = arr[i];
+				min_index = i;
+			}
+		}
+		alert(min_index);
+	</script>
+
+</body>
+</html>

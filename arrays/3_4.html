@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Одномерные массивы 4</title>
+</head>
+<body>
+	<!--Найти индекс максимального элемента массива -->
+	<script>
+		var arr = [4,-9,1,5,6,-3,7,2,8];
+		var max_index = 0;
+		var max = 0;
+
+		for (var i = 0; i < arr.length; i++) {
+			if (max < arr[i]) {
+				max = arr[i];
+				max_index = i;
+			}
+		}
+		alert(max_index);
+	</script>
+
+</body>
+</html>

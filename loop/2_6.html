@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Циклы 6</title>
+</head>
+<body>
+	<!--Вывести число, которое является зеркальным отображением последовательности цифр заданного числа, например, задано число 123, вывести 321 -->
+	<script>
+		var number = 123;
+		var number_str = number.toString();
+		var number_revers = "";
+		for (var i = number_str.length; i >= 0; i--) {
+			number_revers += number_str.charAt(i);
+		}
+		
+		alert(number_revers);
+	</script>
+</body>
+</html>

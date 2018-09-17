@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Одномерные массивы 10</title>
+</head>
+<body>
+	<!--Отсортировать массив (Quick, Merge, Shell, Heap) -->
+	<script>
+		var arr = [4,-9,1,5,6,-3,7,2,8];
+
+		//Quick
+		function quickSort(arr, left, right){
+			var point;
+			var partitionIndex;
+			point = right;//индекс опорного элемента
+
+			if(left < right){
+				partitionIndex = partition(arr, point, left, right);
+				//меняем пару
+				quickSort(arr, left, partitionIndex - 1);
+				quickSort(arr, partitionIndex + 1, right);
+			}
+			return arr;
+		}
+		function partition(arr, point, left, right){
+			var pointValue = arr[point],
+			partitionIndex = left;
+
+			for(var i = left; i < point; i++){
+				if(arr[i] < pointValue){
+					swap(arr, i, partitionIndex);
+					partitionIndex++;
+				}
+			}
+			swap(arr, right, partitionIndex);
+			return partitionIndex;
+		}
+		function swap(arr, i, j){
+			var temp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = temp;
+		}
+
+		var quick = quickSort(arr,0,8); 
+		alert(quick);
+
+
+		//Merge
+		function mergeSort(arr) { //ф-ия разделения
+			if (arr.length < 2) {
+				return arr;
+			}
+			var center = Math.floor(arr.length / 2);
+			var left = arr.slice(0, center);
+			var right  = arr.slice(center);
+
+			return merge(mergeSort(left), mergeSort(right));
+		}
+		function merge(left, right) { //ф-ия двух отсортированных массивов
+			var sortArr = [];
+			var l = 0;
+			var r = 0;
+			while(l < left.length && r < right.length){
+				if (left[l] < right[r]) {
+					sortArr.push(left[l++]);
+				}else{
+					sortArr.push(right[r++]);
+				}
+			}
+			return sortArr.concat(left.slice(l)).concat(right.slice(r));
+		}
+
+		var mergeS = mergeSort(arr); 
+		alert(mergeS);
+
+
+		//Shell
+		function ShellSort(arr)
+		{
+			var i = arr.length/2;
+			while (i > 0){
+				for (var j = 0; j < arr.length; j++){
+					var k = j;
+					var temp = arr[j];
+					while (k >= i && arr[k-i] > temp){
+						arr[k] = arr[k-i];
+						k -= i;
+					}
+					arr[k] = temp;
+				}
+				i = (i==2) ? 1 : Math.floor(i*5/11);
+			}
+			return arr;
+		}
+
+		var shell = ShellSort(arr); 
+		alert(shell);
+
+	</script>
+
+</body>
+</html>

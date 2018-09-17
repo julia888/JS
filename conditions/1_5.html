@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Условные операторы 1</title>
+</head>
+<body>
+	<!--Написать программу определения оценки студента по его рейтингу,
+ на основе следующих правил -->
+	<script>
+		var rating = 35;
+
+		if (rating >= 0 && rating <= 19) {
+			alert("Оценка F");
+		}else if (rating >= 20 && rating <= 39) {
+			alert("Оценка E");
+		}else if (rating >= 40 && rating <= 59) {
+			alert("Оценка D");
+		}else if (rating >= 60 && rating <= 74) {
+			alert("Оценка C");
+		}else if (rating >= 75 && rating <= 89) {
+			alert("Оценка B");
+		}else if (rating >= 90 && rating <= 100) {
+			alert("Оценка A");
+		}else{
+			alert("Нет такого рейтинга");
+		}
+
+
+	</script>
+</body>
+</html>

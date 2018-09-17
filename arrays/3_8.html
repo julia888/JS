@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Одномерные массивы 8</title>
+</head>
+<body>
+	<!--Поменять местами первую и вторую половину массива, например, для массива 1 2 3 4, результат 3 4 1 2 -->
+	<script>
+		var arr = [1,2,3,4];
+		var arr_1 = [];
+		var arr_2 = [];
+
+	
+		for (var i = 0; i < arr.length / 2; i++) {
+			arr_1.push(arr[i]);
+			arr_2.push(arr[i + arr.length / 2]);
+		}
+
+		alert(arr_2.concat(arr_1));
+
+		
+	</script>
+
+</body>
+</html>

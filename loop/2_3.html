@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Циклы 3</title>
+</head>
+<body>
+	<!--Найти корень натурального числа с точностью до целого (рассмотреть вариант последовательного подбора и метод бинарного поиска) -->
+	<script>
+		var number = 125;
+
+		var sqrt;
+		if (number > 0 && Number.isInteger(number)) {
+			
+			for (var i = 1; i*i <= number; i++) {
+					sqrt = i;
+			}
+			alert(sqrt);
+
+			//бинарный поиск
+			var sqrt2 = 0;
+			var up = 0;
+			var down = number;
+			var center = 0;
+
+			while(down - up > 1){
+				center = (up + down) / 2;
+				if(center * center > number){
+					down = center;
+					sqrt2 = center;
+				}else if(center * center < number){
+					up = center;
+				}else{
+					sqrt2 = center;
+					break;
+				}
+			}
+			alert(Math.floor(sqrt2));
+		}else{
+			alert("Ненатуральное число");
+		}
+
+	</script>
+</body>
+</html>

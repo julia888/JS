@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Одномерные массивы 9</title>
+</head>
+<body>
+	<!--Отсортировать массив (пузырьком (Bubble), выбором (Select), вставками (Insert))  -->
+	<script>
+		var arr = [4,-9,1,5,6,-3,7,2,8];
+
+		//Bubble
+
+		for (var i = arr.length - 1; i > 0; i--) {
+			for (var k = 0; k < i; k++) {
+				if (arr[k] > arr[k+1]) {
+					var temp = arr[k];
+					arr[k] = arr[k+1];
+					arr[k+1] = temp;
+				}
+			}
+		}
+
+
+		//Select
+
+		for (var i = 0; i < arr.length; i++) {
+			var min = arr[i];
+			var index_min = i;
+			for (var k = i + 1; k < arr.length; k++) {
+				if (arr[k] < min) {
+					min = arr[k];
+					index_min = k;
+				}				
+			}
+			if (i != index_min) {
+				var temp = arr[i];
+				arr[i] = arr[index_min];
+				arr[index_min] = temp;
+			}
+		}
+
+
+		//Insert
+		
+		var temp;
+		for (var i = 0; i < arr.length - 1; i++) {
+			if (arr[i] > arr[i + 1]) {
+				temp = arr[i + 1];
+				arr[i + 1] = arr[i];
+				var k = i;
+				while(k > 0 && temp < arr[k - 1]){
+					arr[k] = arr[k - 1];
+					k--;
+				}
+				arr[k] = temp;
+
+			}
+			
+		}
+
+		alert(arr);
+
+	</script>
+
+</body>
+</html>

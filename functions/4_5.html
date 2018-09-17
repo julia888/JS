@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Функции 5</title>
+</head>
+<body>
+	<!--Для задания 2 расширить диапазон до 999 миллиардов -->
+	<script>
+		function NumToStr999b(num) {
+			var str = '';
+
+			var arrNum = num.toString().split('');
+			var arrNumRes = [];
+			for (var i = 0; i < arrNum.length; i++) {
+				arrNumRes.push(arrNum[i]);
+			}
+			if (arrNum.length == 12) {//100 000 000
+				if (arrNumRes[1] == '1') {
+					str = hundreds(arrNumRes[0]) + " "+ teens(arrNumRes[2]) + " миллиардов ";
+				}else{
+					str = hundreds(arrNumRes[0]) + " "+ decades(arrNumRes[1]) + " " + units(arrNumRes[2]) + " " + billion(arrNumRes[2]) + " ";
+				}
+				if (arrNumRes[4] == '1') {
+					str += hundreds(arrNumRes[3]) + " "+ teens(arrNumRes[5]) + " миллионов ";
+				}else{
+					str += hundreds(arrNumRes[3]) + " "+ decades(arrNumRes[4]) + " " + units(arrNumRes[5]) + " " + million(arrNumRes[5]) +" ";
+				}
+				if (arrNumRes[7] == '1') {
+					str += hundreds(arrNumRes[6]) + " "+ teens(arrNumRes[8]) + " тысяч ";
+					if (arrNumRes[10] == "1") {
+						str += hundreds(arrNumRes[9]) + " "+ teens(arrNumRes[11]);
+					}else{
+						str +=  hundreds(arrNumRes[9]) + " "+ decades(arrNumRes[10]) + " " + units(arrNumRes[11]);
+					}
+				}else{
+					str += hundreds(arrNumRes[6]) + " "+ decades(arrNumRes[7]) + " " + units(arrNumRes[8], true) + " " + thousand(arrNumRes[8]) + " ";
+					if (arrNumRes[10] == '1') {
+						str = str + hundreds(arrNumRes[9]) + " "+ teens(arrNumRes[9]);
+					}else{
+						str = str + hundreds(arrNumRes[9]) + " "+ decades(arrNumRes[10]) + " " + units(arrNumRes[11]);
+					}
+				}
+			}else if (arrNum.length == 11) {//10 000 000
+				if (arrNumRes[0] == '1') {
+					str = teens(arrNumRes[1]) + " миллиардов ";
+				}else{
+					str = decades(arrNumRes[0]) + " " + units(arrNumRes[1]) + " " + billion(arrNumRes[1]) + " ";
+				}
+				if (arrNumRes[3] == '1') {
+					str += hundreds(arrNumRes[2]) + " "+ teens(arrNumRes[4]) + " миллионов ";
+				}else{
+					str += hundreds(arrNumRes[2]) + " "+ decades(arrNumRes[3]) + " " + units(arrNumRes[4]) + " " + million(arrNumRes[4]) +" ";
+				}
+				if (arrNumRes[6] == '1') {
+					str += hundreds(arrNumRes[5]) + " "+ teens(arrNumRes[7]) + " тысяч ";
+					if (arrNumRes[9] == "1") {
+						str += hundreds(arrNumRes[8]) + " "+ teens(arrNumRes[10]);
+					}else{
+						str +=  hundreds(arrNumRes[8]) + " "+ decades(arrNumRes[9]) + " " + units(arrNumRes[10]);
+					}
+				}else{
+					str += hundreds(arrNumRes[5]) + " "+ decades(arrNumRes[6]) + " " + units(arrNumRes[7], true) + " " + thousand(arrNumRes[7]) + " ";
+					if (arrNumRes[9] == '1') {
+						str = str + hundreds(arrNumRes[8]) + " "+ teens(arrNumRes[8]);
+					}else{
+						str = str + hundreds(arrNumRes[8]) + " "+ decades(arrNumRes[9]) + " " + units(arrNumRes[10]);
+					}
+				}
+			}else if (arrNum.length == 10) {//1 000 000 000
+				str = units(arrNumRes[0]) + " " + billion(arrNumRes[0]) + " ";
+				if (arrNumRes[2] == '1') {
+					str += hundreds(arrNumRes[1]) + " "+ teens(arrNumRes[3]) + " миллионов ";
+				}else{
+					str += hundreds(arrNumRes[1]) + " "+ decades(arrNumRes[2]) + " " + units(arrNumRes[3]) + " " + million(arrNumRes[3]) +" ";
+				}
+				if (arrNumRes[5] == '1') {
+					str += hundreds(arrNumRes[4]) + " "+ teens(arrNumRes[6]) + " тысяч ";
+					if (arrNumRes[8] == "1") {
+						str += hundreds(arrNumRes[7]) + " "+ teens(arrNumRes[9]);
+					}else{
+						str +=  hundreds(arrNumRes[7]) + " "+ decades(arrNumRes[8]) + " " + units(arrNumRes[9]);
+					}
+				}else{
+					str += hundreds(arrNumRes[4]) + " "+ decades(arrNumRes[5]) + " " + units(arrNumRes[6], true) + " " + thousand(arrNumRes[6]) + " ";
+					if (arrNumRes[8] == '1') {
+						str = str + hundreds(arrNumRes[7]) + " "+ teens(arrNumRes[7]);
+					}else{
+						str = str + hundreds(arrNumRes[7]) + " "+ decades(arrNumRes[8]) + " " + units(arrNumRes[9]);
+					}
+				}
+			}else if (arrNum.length == 9) {//100 000 000
+				if (arrNumRes[1] == '1') {
+					str = hundreds(arrNumRes[0]) + " "+ teens(arrNumRes[2]) + " миллионов ";
+				}else{
+					str = hundreds(arrNumRes[0]) + " "+ decades(arrNumRes[1]) + " " + units(arrNumRes[2]) + " " + million(arrNumRes[2]) +" ";
+				}
+				if (arrNumRes[4] == '1') {
+					str += hundreds(arrNumRes[3]) + " "+ teens(arrNumRes[5]) + " тысяч ";
+					if (arrNumRes[7] == "1") {
+						str += hundreds(arrNumRes[6]) + " "+ teens(arrNumRes[8]);
+					}else{
+						str +=  hundreds(arrNumRes[6]) + " "+ decades(arrNumRes[7]) + " " + units(arrNumRes[8]);
+					}
+				}else{
+					str += hundreds(arrNumRes[3]) + " "+ decades(arrNumRes[4]) + " " + units(arrNumRes[5], true) + " " + thousand(arrNumRes[5]) + " ";
+					if (arrNumRes[7] == '1') {
+						str = str + hundreds(arrNumRes[6]) + " "+ teens(arrNumRes[6]);
+					}else{
+						str = str + hundreds(arrNumRes[6]) + " "+ decades(arrNumRes[7]) + " " + units(arrNumRes[8]);
+					}
+				}
+			}else if (arrNum.length == 8) {//10 000 000
+				if (arrNumRes[0] == '1') {
+					str = teens(arrNumRes[1]) + " миллионов ";
+				}else{
+					str = decades(arrNumRes[0]) + " " + units(arrNumRes[1]) + " " + million(arrNumRes[1]) + " ";
+				}
+				if (arrNumRes[3] == '1') {
+					str += hundreds(arrNumRes[2]) + " "+ teens(arrNumRes[4]) + " тысяч ";
+					if (arrNumRes[6] == "1") {
+						str += hundreds(arrNumRes[5]) + " "+ teens(arrNumRes[7]);
+					}else{
+						str +=  hundreds(arrNumRes[5]) + " "+ decades(arrNumRes[6]) + " " + units(arrNumRes[7]);
+					}
+				}else{
+					str += hundreds(arrNumRes[2]) + " "+ decades(arrNumRes[3]) + " " + units(arrNumRes[4], true) + " " + thousand(arrNumRes[4]) + " ";
+					if (arrNumRes[6] == '1') {
+						str = str + hundreds(arrNumRes[5]) + " "+ teens(arrNumRes[5]);
+					}else{
+						str = str + hundreds(arrNumRes[5]) + " "+ decades(arrNumRes[6]) + " " + units(arrNumRes[7]);
+					}
+				}
+			}else if (arrNum.length == 7) {//1 000 000
+				str = units(arrNumRes[0]) + " " + million(arrNumRes[0]) + " ";
+				if (arrNumRes[2] == '1') {
+					str += hundreds(arrNumRes[1]) + " "+ teens(arrNumRes[3]) + " тысяч ";
+					if (arrNumRes[5] == "1") {
+						str += hundreds(arrNumRes[4]) + " "+ teens(arrNumRes[6]);
+					}else{
+						str +=  hundreds(arrNumRes[4]) + " "+ decades(arrNumRes[5]) + " " + units(arrNumRes[6]);
+					}
+				}else{
+					str += hundreds(arrNumRes[1]) + " "+ decades(arrNumRes[2]) + " " + units(arrNumRes[3], true) + " " + thousand(arrNumRes[3]) + " ";
+					if (arrNumRes[5] == '1') {
+						str = str + hundreds(arrNumRes[4]) + " "+ teens(arrNumRes[4]);
+					}else{
+						str = str + hundreds(arrNumRes[4]) + " "+ decades(arrNumRes[5]) + " " + units(arrNumRes[6]);
+					}
+				}
+			}else if (arrNum.length == 6) {//100 000
+				if (arrNumRes[1] == '1') {
+					str = hundreds(arrNumRes[0]) + " "+ teens(arrNumRes[2]) + " тысяч ";
+					if (arrNumRes[4] == "1") {
+						str += hundreds(arrNumRes[3]) + " "+ teens(arrNumRes[5]);
+					}else{
+						str +=  hundreds(arrNumRes[3]) + " "+ decades(arrNumRes[4]) + " " + units(arrNumRes[5]);
+					}
+				}else{
+					str = hundreds(arrNumRes[0]) + " "+ decades(arrNumRes[1]) + " " + units(arrNumRes[2], true) + " " + thousand(arrNumRes[2]) + " ";
+					
+					if (arrNumRes[4] == '1') {
+						str = str + hundreds(arrNumRes[3]) + " "+ teens(arrNumRes[5]);
+					}else{
+						str = str + hundreds(arrNumRes[3]) + " "+ decades(arrNumRes[4]) + " " + units(arrNumRes[5]);
+					}
+				}
+			}else if (arrNum.length == 5) {//10 000
+				if (arrNumRes[0] == '1') {
+					str = teens(arrNumRes[1]) + " тысяч ";
+					if (arrNumRes[3] == '1') {
+						str = str + hundreds(arrNumRes[2]) + " "+ teens(arrNumRes[4]);
+					}else{
+						str = str + hundreds(arrNumRes[2]) + " "+ decades(arrNumRes[3]) + " " + units(arrNumRes[4]);
+					}
+				}else{			
+					if (arrNumRes[3] == '1' || "2") {
+						str = decades(arrNumRes[0]) + " " + units(arrNumRes[1], true) + " "+ thousand(arrNumRes[1]) + " ";
+					}else{
+						str = decades(arrNumRes[0]) + " " + units(arrNumRes[1]) + " "+ thousand(arrNumRes[1]) + " ";
+					}
+					if (arrNumRes[3] == '1') {
+						str = str + hundreds(arrNumRes[2]) + " "+ teens(arrNumRes[4]);
+					}else{
+						str = str + hundreds(arrNumRes[2]) + " "+ decades(arrNumRes[3]) + " " + units(arrNumRes[4]);
+					}
+				}		
+			}else if (arrNum.length == 4) {//1 000
+				if (arrNumRes[2] == ('1')) {
+					str = units(arrNumRes[0], true) + " " + thousand(arrNumRes[0]) + " " + hundreds(arrNumRes[1]) + " "+ teens(arrNumRes[2]);
+				}else{
+					if (arrNumRes[0] == ('1' || '2')) {
+						str = units(arrNumRes[0], true) + " " + thousand(arrNumRes[0]) + " " + hundreds(arrNumRes[1]) + " "+ decades(arrNumRes[2]) + " " + units(arrNumRes[3]);
+					}else{
+						str = units(arrNumRes[0]) + " " + thousand(arrNumRes[0]) + " " + hundreds(arrNumRes[1]) + " "+ decades(arrNumRes[2]) + " " + units(arrNumRes[3]);
+					}
+				}
+			}else if (arrNum.length == 3) {//100
+				if (arrNumRes[1] == '1') {
+					str = hundreds(arrNumRes[0]) + " "+ teens(arrNumRes[2]);
+				}else{
+					str = hundreds(arrNumRes[0]) + " "+ decades(arrNumRes[1]) + " " + units(arrNumRes[2]);
+				}
+			}else if (arrNum.length == 2) {//10
+				if (arrNumRes[0] == '1') {
+					str = (teens(arrNumRes[1]));
+				}else{
+					str = (decades(arrNumRes[0]) + " " + units(arrNumRes[1]));
+				}
+			}else if (arrNum.length == 1) { //1
+				if (arrNumRes[0] == '0') {
+					str = "ноль";
+				}else{
+					str = (units(arrNumRes[0]));
+				}
+			}else{
+				str = "Что-то пошло не так!";
+			}
+			return alert(str);
+		}
+
+		function billion(num) {
+			if (num == '1') {
+				return "миллиард";
+			}else if (num == '2' || num == '3' || num == '4') {
+				return "миллиарда";
+			}else{
+				return "миллиардов";
+			}
+		}
+
+		function million(num) {
+			if (num == '1') {
+				return "миллион";
+			}else if (num == '2' || num == '3' || num == '4') {
+				return "миллиона";
+			}else{
+				return "миллионов";
+			}
+		}
+
+		function thousand(num) {
+			if (num == '1') {
+				return "тысяча";
+			}else if (num == '2' || num == '3' || num == '4') {
+				return "тысячи";
+			}else{
+				return "тысяч";
+			}
+		}
+
+		function hundreds(num) {
+			switch(num){
+				case '0':
+					return "";
+				case '1':
+					return "сто";
+				case '2':
+					return "двести";
+				case '3':
+					return "триста";
+				case '4':
+					return "четыреста";
+				case '5':
+					return "пятьсот";
+				case '6':
+					return "шестьсот";
+				case '7':
+					return "семьсот";
+				case '8':
+					return "восемьсот";
+				case '9':
+					return "девятьсот";
+				default:
+					return "Что-то пошло не так";
+			}
+		}
+
+		function decades(num) {
+			switch(num){
+				case '0':
+					return "";
+				case '1':
+					return "десять";
+				case '2':
+					return "двадцать";
+				case '3':
+					return "тридцать";
+				case '4':
+					return "сорок";
+				case '5':
+					return "пятьдесят";
+				case '6':
+					return "шестьдесят";
+				case '7':
+					return "семьдесят";
+				case '8':
+					return "восемьдесят";
+				case '9':
+					return "девяносто";
+				default:
+					return "Что-то пошло не так";
+			}
+		}
+
+
+		function units(num, fem) {
+			switch(num){
+				case '0':
+					return "";
+				case '1':
+					return fem ? "одна" : "один";
+				case '2':
+					return fem ? "две" : "два";
+				case '3':
+					return "три";
+				case '4':
+					return "четыре";
+				case '5':
+					return "пять";
+				case '6':
+					return "шесть";
+				case '7':
+					return "семь";
+				case '8':
+					return "восемь";
+				case '9':
+					return "девять";
+				default:
+					return "Что-то пошло не так";
+			}
+		}
+
+
+		function teens(num) {
+			var str = '';
+			switch(num){
+				case '0':
+					return "десять";
+				case '1':
+					return"одиннадцать";
+				case '2':
+					return "двенадцать";
+				case '3':
+					return "тринадцать";
+				case '4':
+					return "четырнадцать";
+				case '5':
+					return"пятнадцать";
+				case '6':
+					return "шестнадцать";
+				case '7':
+					return "семнадцать";
+				case '8':
+					return "восемнадцать";
+				case '9':
+					return "девятнадцать";
+				default:
+					return "Что-то пошло не так";
+			}
+		}
+
+		NumToStr999b(771771771711);
+	</script>
+
+</body>
+</html>
